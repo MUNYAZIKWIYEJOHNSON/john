@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="rw">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tanga Umushinga | RWF Market</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --accent: #4e61cc;
+  --bg: #1a2233;
+  --card: #ffffff;
+  --text: #2d3436;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #3e4666 0%, #292e41 100%);
+  margin: 0; padding: 20px;
+  display: flex; justify-content: center; align-items: center;
+  min-height: 100vh;
+}
+
+/* BACK BUTTON */
+.back-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 10px 18px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 14px;
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: 0.3s;
+}
+.back-btn:hover { background: white; color: var(--bg); }
+
+.container {
+  background: var(--card);
+  width: 100%;
+  max-width: 650px; /* Twongereye ubugari kuko hari amakuru menshi */
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+  animation: slideIn 0.6s ease-out;
+}
+
+@keyframes slideIn {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+h2 {
+  text-align: center;
+  color: var(--accent);
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+p.subtitle {
+  text-align: center;
+  color: #636e72;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.full { grid-column: span 2; }
+
+label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #636e72;
+  margin-top: 10px;
+  display: block;
+  text-transform: uppercase;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+  border: 1.5px solid #dfe6e9;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  transition: 0.3s;
+  background: #f9f9fb;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--accent);
+  background: white;
+  box-shadow: 0 0 0 4px rgba(78,97,204,0.1);
+}
+
+textarea { min-height: 100px; resize: vertical; }
+
+/* FILE UPLOAD STYLING */
+input[type="file"] {
+  background: white;
+  padding: 8px;
+  cursor: pointer;
+}
+
+button[type="submit"] {
+  width: 100%;
+  background: var(--accent);
+  border: none;
+  padding: 16px;
+  color: white;
+  font-size: 16px;
+  border-radius: 12px;
+  margin-top: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+  box-shadow: 0 4px 15px rgba(78,97,204,0.3);
+}
+
+button[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(78,97,204,0.4);
+}
+
+#responseMsg {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 12px;
+  background: #f0f2ff;
+  border-left: 5px solid var(--accent);
+  display: none;
+  line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  .form-grid { grid-template-columns: 1fr; }
+  .full { grid-column: span 1; }
+  .container { padding: 25px; }
+}
+</style>
+</head>
+<body>
+
+<a href="javascript:history.back()" class="back-btn">← Subira Inyuma</a>
+
+<div class="container">
+  <h2>Tanga Umushinga Wawe</h2>
+  <p class="subtitle">Uzuza amakuru asabwa kugira ngo ushakirwe abashoramari</p>
+ 
+  <form id="projectForm">
+    <div class="form-grid">
+      <div class="full">
+        <label>Amazina yawe</label>
+        <input type="text" id="name" placeholder="Urugero: Munyazikwiye Johnson" required>
+      </div>
+
+      <div>
+        <label>Email yawe</label>
+        <input type="email" id="email" placeholder="example@mail.com" required>
+      </div>
+
+      <div>
+        <label>Telefone</label>
+        <input type="tel" id="phone" placeholder="078XXXXXXX" required>
+      </div>
+
+      <div>
+        <label>Icyiciro (Category)</label>
+        <select id="category" required>
+          <option value="">-- Hitamo --</option>
+          <option value="Technology">Ikoranabuhanga</option>
+          <option value="Agriculture">Ubuhinzi</option>
+          <option value="Education">Uburezi</option>
+          <option value="Health">Ubuzima</option>
+          <option value="Business">Ubucuruzi</option>
+          <option value="Others">Ibindi</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Ubunararibonye (Experience)</label>
+        <select id="experience" required>
+          <option value="">-- Hitamo --</option>
+          <option value="Beginner">Nabitangiye ubu</option>
+          <option value="Intermediate">Hagati na hagati</option>
+          <option value="Advanced">Inararibonye</option>
+        </select>
+      </div>
+
+      <div class="full">
+        <label>Izina ry'Umushinga</label>
+        <input type="text" id="projectTitle" placeholder="Urugero: Smart Farm System" required>
+      </div>
+
+      <div class="full">
+        <label>Sobanura Umushinga mu ncamake</label>
+        <textarea id="description" placeholder="Andika hano amakuru arambuye y'umushinga..." required></textarea>
+      </div>
+
+      <div>
+        <label>Ingengo y'imari (RWF)</label>
+        <input type="number" id="budget" placeholder="Urugero: 500,000" required>
+      </div>
+
+      <div>
+        <label>Igihe uzamara (Timeline)</label>
+        <input type="text" id="timeline" placeholder="Urugero: Amezi 6" required>
+      </div>
+
+      <div class="full">
+        <label>Dosiye y'umushinga (PDF/DOCX)</label>
+        <input type="file" id="fileUpload" accept=".pdf,.docx">
+      </div>
+    </div>
+
+    <button type="submit">Ohereza Umushinga</button>
+  </form>
+
+  <div id="responseMsg"></div>
+</div>
+
+<script>
+const categoryNames = {
+  "Technology": "Ikoranabuhanga",
+  "Agriculture": "Ubuhinzi",
+  "Education": "Uburezi",
+  "Health": "Ubuzima",
+  "Business": "Ubucuruzi",
+  "Others": "Ibindi"
+};
+
+document.getElementById("projectForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const phone = document.getElementById("phone").value;
+  const project = document.getElementById("projectTitle").value;
+  const budget = parseFloat(document.getElementById("budget").value).toLocaleString();
+  const cat = document.getElementById("category").value;
+
+  const message = `
+    <strong>Murakoze ${name}!</strong><br>
+    Umushinga wawe <b>"${project}"</b> mu cyiciro cya <b>${categoryNames[cat]}</b> wakiriwe.<br>
+    <br>
+    Ingengo y'imari yasabwe: <b>${budget} RWF</b>.<br>
+    Tugiye kuwusuzuma, tuzakumenyesha kuri <b>${email}</b> cyangwa kuri telphone <b>${phone}</b>.
+  `;
+
+  const resp = document.getElementById("responseMsg");
+  resp.style.display = "block";
+  resp.innerHTML = message;
+
+  // Gusubira hejuru kugira ngo basome ubutumwa
+  resp.scrollIntoView({ behavior: 'smooth' });
+});
+</script>
+
+</body>
+</html>

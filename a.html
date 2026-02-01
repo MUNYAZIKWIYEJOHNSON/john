@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="rw">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Investor – Tanga amakuru</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --accent: #4e61cc;
+  --bg: #f3f4f9;
+  --card: #ffffff;
+  --text: #2d3436;
+  --input-bg: #f9f9fb;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #3e4666 0%, #292e41 100%);
+  margin: 0; padding: 20px;
+  display: flex; justify-content: center; align-items: center;
+  min-height: 100vh;
+}
+
+.box {
+  background: var(--card);
+  padding: 40px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 600px; /* Twongereye ubugari */
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+  animation: slideIn 0.6s ease-out;
+}
+
+@keyframes slideIn {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+h3 {
+  margin-top: 0;
+  color: var(--accent);
+  font-size: 24px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Inkingi ebyiri */
+  gap: 15px;
+}
+
+.full-width { grid-column: span 2; }
+
+label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #636e72;
+  margin-top: 10px;
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  margin-top: 5px;
+  outline: none;
+  background: var(--input-bg);
+  transition: all 0.3s;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--accent);
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(78,97,204,0.1);
+}
+
+textarea { height: 80px; }
+
+button {
+  width: 100%;
+  padding: 15px;
+  background: var(--accent);
+  border: none;
+  color: #fff;
+  border-radius: 10px;
+  margin-top: 25px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 4px 15px rgba(78,97,204,0.3);
+}
+/* BACK BUTTON */
+.back-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 10px 18px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 14px;
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: 0.3s;
+}
+.back-btn:hover { background: white; color: var(--bg); }
+button:hover {
+  background: #3d4fad;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(78,97,204,0.4);
+}
+
+#invMsg {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  background: #f0f2ff;
+  border-left: 5px solid var(--accent);
+  display: none; /* Bihishe kugeza banyuzemo */
+  line-height: 1.6;
+  color: #2d3436;
+}
+
+/* Kuri Telefone bibe inkingi imwe */
+@media (max-width: 500px) {
+  .grid { grid-template-columns: 1fr; }
+  .full-width { grid-column: span 1; }
+  .box { padding: 25px; }
+}
+</style>
+</head>
+<body>
+<a href="javascript:history.back()" class="back-btn">← Subira Inyuma</a>
+<div class="box">
+  <h3>Shora Imari – Tanga Amakuru</h3>
+
+  <form id="invForm">
+    <div class="grid">
+      <div class="full-width">
+        <label>Amazina yawe</label>
+        <input type="text" id="name" placeholder="Urugero: Munyazikwiye Johnson" required>
+      </div>
+
+      <div>
+        <label>Email yawe</label>
+        <input type="email" id="email" placeholder="example@mail.com" required>
+      </div>
+
+      <div>
+        <label>Telefone</label>
+        <input type="tel" id="phone" placeholder="078XXXXXXX" required>
+      </div>
+
+      <div>
+        <label>Ubunararibonye (Experience)</label>
+        <select id="experience" required>
+          <option value="">-- Hitamo --</option>
+          <option value="Beginner">Nabitangiye ubu</option>
+          <option value="Intermediate">Hagati na hagati</option>
+          <option value="Advanced">Inararibonye</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Icyiciro cy'Imishinga</label>
+        <select id="category" required>
+          <option value="">-- Hitamo --</option>
+          <option value="Technology">Ikoranabuhanga</option>
+          <option value="Agriculture">Ubuhinzi</option>
+          <option value="Education">Uburezi</option>
+          <option value="Health">Ubuzima</option>
+          <option value="Business">Ubucuruzi</option>
+          <option value="Others">Ibindi</option>
+        </select>
+      </div>
+
+      <div class="full-width">
+        <label>Ni iki wifuza gushoramo imari mu buryo bw'umwihariko?</label>
+        <input type="text" id="interest" placeholder="Urugero: Ubworozi bw'amafi, App ya MoMo..." required>
+      </div>
+
+      <div class="full-width">
+        <label>Amafaranga uteganya gushora (RWF)</label>
+        <input type="number" id="amount" placeholder="Urugero: 500,000" required>
+      </div>
+
+      <div class="full-width">
+        <label>Kuki wifuza gushora imari?</label>
+        <textarea id="reason" placeholder="Sobanura muri make..." required></textarea>
+      </div>
+    </div>
+
+    <button type="submit">Ohereza Amakuru</button>
+  </form>
+
+  <div id="invMsg"></div>
+</div>
+
+<script>
+const companyInfo = {
+  "Technology": "Ikoranabuhanga",
+  "Agriculture": "Ubuhinzi",
+  "Education": "Uburezi",
+  "Health": "Ubuzima",
+  "Business": "Ubucuruzi",
+  "Others": "Ibindi"
+};
+
+document.getElementById("invForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const phone = document.getElementById("phone").value;
+  const experience = document.getElementById("experience").value;
+  const reason = document.getElementById("reason").value;
+  const amount = parseFloat(document.getElementById("amount").value).toLocaleString(); // Format imibare neza
+  const category = document.getElementById("category").value;
+
+  const message = `
+    <strong>Murakoze ${name}!</strong><br>
+    Twakiriye gahunda yawe yo gushora <b>${amount} RWF</b> muri <b>${companyInfo[category]}</b>.<br>
+    <br>
+    Tugiye gusuzuma ubusabe bwawe, tuzakumenyesha vuba kuri <b>${email}</b> cyangwa kuri <b>${phone}</b>.
+  `;
+
+  const msgDiv = document.getElementById("invMsg");
+  msgDiv.style.display = "block";
+  msgDiv.innerHTML = message;
+  
+  // Guhanagura fomu nyuma yo kohereza
+  // this.reset(); 
+});
+</script>
+
+</body>
+</html>
