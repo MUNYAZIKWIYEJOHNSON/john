@@ -187,45 +187,50 @@ footer {
     </div>
 </div>
 
-<footer>
-    <div class="footer-container">
-        <div class="footer-section">
-            <h3>Contact Us</h3>
-            <p><strong>RWF Market</strong> – Gukurikirana isoko ry’imari mu Rwanda no mu bindi bihugu.</p>
-            <p>📍 Kigali, Rwanda</p>
-            <p>📧 <a href="mailto:munyazikwiyejohnson237@gmail.com" style="color:inherit;">munyazikwiyejohnson237@gmail.com</a></p>
-            <div style="margin-top:15px;">
-                <a href="#" style="color:#fff; margin-right:15px;">Facebook</a>
-                <a href="#" style="color:#fff; margin-right:15px;">Twitter</a>
-                <a href="#" style="color:#fff;">Instagram</a>
-            </div>
-        </div>
-
-        <div class="footer-section">
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="https://rse.rw" target="_blank">Rwanda Stock Exchange</a></li>
-                <li><a href="https://www.bnr.rw" target="_blank">National Bank of Rwanda</a></li>
-                <li><a href="https://www.rnit.rw" target="_blank">RNIT (Iterambere Fund)</a></li>
-                <li><a href="https://fininclusion.bnr.rw" target="_blank">Financial Dashboard</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-section">
-            <h3>Our Partners</h3>
-            <ul>
-                <li><a href="https://bpr.rw" target="_blank">BPR Bank Rwanda</a></li>
-                <li><a href="https://bk.rw" target="_blank">Bank of Kigali (BK)</a></li>
-                <li><a href="https://kifc.rw" target="_blank">KIFC (Financial Centre)</a></li>
-            </ul>
-        </div>
+<footer class="main-footer">
+  <div class="footer-container">
+    
+    <div class="footer-section about">
+      <div class="footer-logo">
+        <span class="logo-icon">📈</span>
+        <span class="logo-text">BridgeInvest&nbsp;<span>Rwanda</span></span>
+      </div>
+      <p>Isoko ry’imari mu Rwanda mu ntoki zawe. Amakuru yizewe, imibare ya nyayo, n'inyigisho ku ishoramari.</p>
+      <div class="social-links">
+        <a href="#">FB</a>
+        <a href="#">TW</a>
+        <a href="#">IG</a>
+        <a href="#">LN</a>
+      </div>
     </div>
 
-    <div class="footer-bottom">
-        <p>© 2026 RWF Market. All rights reserved. Made with ❤️ for Rwandan Investors.</p>
+    <div class="footer-section">
+      <h3 class="footer-title">Navigation</h3>
+      <ul class="footer-links">
+        <li><a href="#" onclick="loadSection('main')">🏠 Ahabanza</a></li>
+        <li><a href="#" onclick="loadSection('exchange')">💱 Live Exchange Rates</a></li>
+        <li><a href="#" onclick="loadSection('news')">📰 News / Updates</a></li>
+        <li><a href="#" onclick="loadSection('companies')">🏢 Companies Overview</a></li>
+        <li><a href="#" onclick="loadSection('about')">ℹ️ About Us</a></li>
+      </ul>
     </div>
+
+    <div class="footer-section">
+      <h3 class="footer-title">Tools & More</h3>
+      <ul class="footer-links">
+        <li><a href="#" onclick="loadSection('calculator')">🧾 Loan & Investment</a></li>
+        <li><a href="#" onclick="loadSection('simple-calculator')">🖩 Simple Calculator</a></li>
+        <li><a href="#" onclick="loadSection('investment')">📈 Investment Tips</a></li>
+        <li><a href="mailto:munyazikwiyejohnson237@gmail.com">📧 Twandikire kuri Email</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2026 BridgeInvest Rwanda. Urubuga rwa mbere rw'imari mu Rwanda.</p>
+  </div>
 </footer>
-
 <script>
 function go(role) {
     if (role === "owner") {
