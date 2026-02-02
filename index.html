@@ -436,85 +436,66 @@ button:active {
   .social-links { justify-content: center; }
 }
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:16px;
-  margin-top:20px;
- 
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+  padding: 20px;
 }
-.card{
-  background:#0a0a0a;
-  padding:16px;
-  border-radius:14px;
-  width: 70%;
-   text-align: center;
-   position: center;
+
+.card {
+  background: rgba(10, 17, 34, 0.95);
+  border: 1px solid #e1e8ed;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
-.card img{
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  border-color: #4e61cc;
+}
+
+.card img {
   width: 100%;
-  height: 40%;
-
+  height: 180px;
+  object-fit: contain; /* Bituma logo itaryama vibaya */
+  background: rgba(10, 17, 34, 0.95);
+  padding: 15px;
 }
 
-.card-actions{
-  display:flex;
-  gap:10px;
-  margin-top:12px;
+.status-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 6px 12px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 600;
+  z-index: 10;
+  backdrop-filter: blur(4px);
 }
-.read-btn{
-  flex:1;
-  padding:8px 12px;
-  border:none;
-  border-radius:10px;
-  background:#7aa2d9;
-  color:#fff;
-  cursor:pointer;
-}
-.invest-btn{
-  flex:1;
-  padding:8px 12px;
-  border:none;
-  border-radius:10px;
-  background:#22c55e;
-  color:#fff;
-  cursor:pointer;
-}
-.read-btn:hover,
-.invest-btn:hover{
-  opacity:.85;
-}
-.up{color:#4ade80;}
-.mid{color:#facc15;}
-.warn{color:#fb7185;}
 
-form{
-  background:rgba(255,255,255,0.05);
-  padding:16px;
-  border-radius:12px;
-  max-width:500px;
-}
-form input, form textarea{
-  width:100%;
-  padding:8px;
-  border-radius:8px;
-  border:1px solid #ccc;
-  margin-top:4px;
-}
-form button{
-  padding:10px 16px;
-  margin-right:8px;
-  border:none;
-  border-radius:10px;
-  background:#22c55e;
-  color:#fff;
-  cursor:pointer;
-}
-form button[type="button"]{
-  background:#7aa2d9;
-}
-form button:hover{
-  opacity:.85;
+.up { background: rgba(46, 204, 113, 0.15); color: #27ae60; }
+.mid { background: rgba(241, 196, 15, 0.15); color: #9a7d0a; }
+.warn { background: rgba(231, 76, 60, 0.15); color: #c0392b; }
+
+.card h3 { padding: 0 20px; margin: 15px 0 5px; font-size: 1.2rem; }
+.card p { padding: 0 20px; color: #636e72; font-size: 14px; }
+.summary { height: 60px; overflow: hidden; margin-bottom: 20px !important; }
+
+.card-actions {
+  margin-top: auto;
+  padding: 20px;
+  display: flex;
+  gap: 10px;
+  background: rgba(10, 17, 34, 0.95);
+  border-top: 1px solid #f0f0f0;
 }
 
 
@@ -1924,315 +1905,308 @@ if (sec === "investment") {
     `;
     return;
 }
-  
+   
   if(sec === "companies"){
-    c.innerHTML = `
-    <h2>🏢 Companies zo mu Rwanda – Full Overview</h2>
-    <p style="opacity:.8">
-      Reba ama-company akomeye mu Rwanda, icyo akora, status, n’isesengura ry’ishoramari.
-    </p>
+  c.innerHTML = `
+  
+    <div style="text-align: center; margin-bottom: 40px; animation: fadeIn 0.8s ease;">
+      <h2 style="font-size: 32px; color: #2d3436; margin-bottom: 10px;">🏢 Rwanda Investment Overview</h2>
+      <p style="color: #636e72; max-width: 700px; margin: 0 auto; line-height: 1.6;">
+        Reba ama-company akomeye mu Rwanda, icyo akora, status, n’isesengura ry’ishoramari rya BridgeInvest.
+      </p>
+    </div>
 
     <div class="grid">
 
-      <!-- BK -->
       <div class="card">
-        <h3>🏦 Bank of Kigali (BK)</h3>
-        <img src="br.png" alt="Gutuza umutima" />
+        <span class="status-badge up">📈 Kuzamuka</span>
+        <img src="br.png" alt="BK" />
+        <h3>Bank of Kigali (BK)</h3>
         <p><b>Sector:</b> Banking</p>
-        <p><b>Status:</b> <span class="up">📈 Kuzamuka</span></p>
-        <p><b>Summary:</b> Banki ya mbere mu Rwanda, digital banking ikomeye, cash flow ihamye.</p>
+        <p class="summary">Banki ya mbere mu Rwanda, digital banking ikomeye, cash flow ihamye.</p>
         <div class="card-actions">
           <button class="read-btn" onclick="readMore('bk')">Read more →</button>
-          <button class="invest-btn" onclick="investNow('bk')">💰 Shora nonaha</button>
+          <button class="invest-btn" onclick="investNow('bk')">💰 Shora</button>
         </div>
       </div>
 
-      <!-- 9. Rwanda Online -->
-        <div class="card">
-          <h3>💻 Rwanda Online</h3>
-          <img src="on.png" alt="Gutuza umutima" />
-          <p><b>Sector:</b> IT / Internet</p>
-          <p><b>Status:</b> ⚖️ Hagati</p>
-          <p><b>Summary:</b> Internet & IT services.</p>
-          <div class="card-actions">
-            <button class="read-btn" onclick="readMore('ro')">Read more →</button>
-            <button class="invest-btn" onclick="investNow('ro')">💰 Shora nonaha</button>
-          </div>
-        </div>
-      <!-- MTN -->
       <div class="card">
-        <h3>📱 MTN Rwanda</h3>
-        <img src="mtn.png" alt="Gutuza umutima" />
+        <span class="status-badge mid">⚖️ Hagati</span>
+        <img src="on.png" alt="Irembo" />
+        <h3>Rwanda Online</h3>
+        <p><b>Sector:</b> IT / Internet</p>
+        <p class="summary">Igezweho mu guhuza serivisi za leta n'abaturage binyuze mu ikoranabuhanga.</p>
+        <div class="card-actions">
+          <button class="read-btn" onclick="readMore('ro')">Read more →</button>
+          <button class="invest-btn" onclick="investNow('ro')">💰 Shora</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="status-badge mid">⚖️ Hagati</span>
+        <img src="mtn.png" alt="MTN" />
+        <h3>MTN Rwanda</h3>
         <p><b>Sector:</b> Telecom</p>
-        <p><b>Status:</b> <span class="mid">⚖️ Hagati</span></p>
-        <p><b>Summary:</b> Mobile Money ikomeye, isoko rinini.</p>
+        <p class="summary">Mobile Money ikomeye, isoko rinini ry'abafatanyabikorwa mu Rwanda.</p>
         <div class="card-actions">
           <button class="read-btn" onclick="readMore('mtn')">Read more →</button>
-          <button class="invest-btn" onclick="investNow('mtn')">💰 Shora nonaha</button>
+          <button class="invest-btn" onclick="investNow('mtn')">💰 Shora</button>
         </div>
       </div>
 
-      <!-- Inyange -->
       <div class="card">
-        <h3>🥛 Inyange Industries</h3>
-        <img src="inya.webp" alt="Gutuza umutima" />
+        <span class="status-badge up">📈 Kuzamuka</span>
+        <img src="inya.webp" alt="Inyange" />
+        <h3>Inyange Industries</h3>
         <p><b>Sector:</b> Manufacturing</p>
-        <p><b>Status:</b> <span class="up">📈 Kuzamuka</span></p>
-        <p><b>Summary:</b> Export iri kwiyongera, brand yizewe, product quality ihamye.</p>
+        <p class="summary">Export iri kwiyongera, brand yizewe mu biribwa n'ibinyobwa.</p>
         <div class="card-actions">
           <button class="read-btn" onclick="readMore('inyange')">Read more →</button>
-          <button class="invest-btn" onclick="investNow('inyange')">💰 Shora nonaha</button>
+          <button class="invest-btn" onclick="investNow('inyange')">💰 Shora</button>
         </div>
       </div>
 
-
-      <!-- RwandAir -->
       <div class="card">
-         <h3>✈️ RwandAir</h3>
-<img src="aire.png" alt="Gutuza umutima" />
+        <span class="status-badge warn">⚠️ Mu bibazo</span>
+        <img src="aire.png" alt="RwandAir" />
+        <h3>RwandAir</h3>
         <p><b>Sector:</b> Aviation</p>
-        <p><b>Status:</b> <span class="warn">⚠️ Mu bibazo</span></p>
-        <p><b>Summary:</b> Ifite amadeni menshi ariko government support ihari.</p>
+        <p class="summary">Ifite amadeni menshi ariko ikomeje guhabwa inkunga na leta ngo yaguke.</p>
         <div class="card-actions">
           <button class="read-btn" onclick="readMore('rwandair')">Read more →</button>
-          <button class="invest-btn" onclick="investNow('rwandair')">💰 Shora nonaha</button>
+          <button class="invest-btn" onclick="investNow('rwandair')">💰 Shora</button>
         </div>
       </div>
 
-      <!-- Airtel -->
       <div class="card">
-        <h3>📱 Airtel Rwanda</h3>
-        <img src="airt.png" alt="Gutuza umutima" />
+        <span class="status-badge mid">⚖️ Hagati</span>
+        <img src="airt.png" alt="Airtel" />
+        <h3>Airtel Rwanda</h3>
         <p><b>Sector:</b> Telecom</p>
-        <p><b>Status:</b> <span class="mid">⚖️ Hagati</span></p>
-        <p><b>Summary:</b> Amarushanwa akomeye na MTN, service quality iri kwiyongera.</p>
+        <p class="summary">Amarushanwa akomeye na MTN, service quality iri kuzamuka cyane.</p>
         <div class="card-actions">
           <button class="read-btn" onclick="readMore('airtel')">Read more →</button>
-          <button class="invest-btn" onclick="investNow('airtel')">💰 Shora nonaha</button>
+          <button class="invest-btn" onclick="investNow('airtel')">💰 Shora</button>
         </div>
       </div>
 
-<div class="card">
-          <h3>💻 Andela Rwanda</h3>
-         <img src="nr.png" alt="Gutuza umutima" />
-          <p><b>Sector:</b> Tech / Education</p>
-          <p><b>Status:</b> 📈 Kuzamuka</p>
-          <p><b>Summary:</b> Gutegura no kohereza programmers ku masoko mpuzamahanga.</p>
-          <div class="card-actions">
-            <button class="read-btn" onclick="readMore('andela')">Read more →</button>
-            <button class="invest-btn" onclick="investNow('andela')">💰 Shora nonaha</button>
-          </div>
-        </div>
-
-        <!-- 2. Equity Bank Rwanda -->
-        <div class="card">
-          <h3>🏦 Equity Bank Rwanda</h3>
-          <img src="32.png" alt="Gutuza umutima" />
-          <p><b>Sector:</b> Banking</p>
-          <p><b>Status:</b> ⚖️ Hagati</p>
-          <p><b>Summary:</b> Serivisi za banki ku bantu ku giti cyabo n’ibigo.</p>
-          <div class="card-actions">
-            <button class="read-btn" onclick="readMore('equity')">Read more →</button>
-            <button class="invest-btn" onclick="investNow('equity')">💰 Shora nonaha</button>
-          </div>
-        </div>
-
-        <!-- 3. I&M Bank Rwanda -->
-        <div class="card">
-          <h3>🏦 I&M Bank Rwanda</h3>
-          <img src="https://www.imbankgroup.com/rw/wp-content/uploads/sites/4/2025/01/im-logo.png"/>
-          <p><b>Sector:</b> Banking</p>
-          <p><b>Status:</b> 📈 Kuzamuka</p>
-          <p><b>Summary:</b> Banki yibanda ku business nini n’abantu ku giti cyabo.</p>
-          <div class="card-actions">
-            <button class="read-btn" onclick="readMore('im')">Read more →</button>
-            <button class="invest-btn" onclick="investNow('im')">💰 Shora nonaha</button>
-          </div>
-        </div>
-
-        <!-- 4. Access Bank Rwanda -->
-        <div class="card">
-          <h3>🏦 Access Bank Rwanda</h3>
-          <img src="ace.jpg" alt="Gutuza umutima" />
-          <p><b>Sector:</b> Banking</p>
-          <p><b>Status:</b> ⚖️ Hagati</p>
-          <p><b>Summary:</b> Banki mpuzamahanga ikorera mu Rwanda.</p>
-          <div class="card-actions">
-            <button class="read-btn" onclick="readMore('access')">Read more →</button>
-            <button class="invest-btn" onclick="investNow('access')">💰 Shora nonaha</button>
-          </div>
-        </div>
-
-        <!-- 5. BPR Bank Rwanda -->
-        <div class="card">
-          <h3>🏦 BPR Bank Rwanda</h3>
-          <img src="bpr.jpg" alt="Gutuza umutima" />
-          <p><b>Sector:</b> Banking</p>
-          <p><b>Status:</b> ⚖️ Hagati</p>
-          <p><b>Summary:</b> Yibanda ku baturage benshi n’iterambere ry’icyaro.</p>
-          <div class="card-actions">
-            <button class="read-btn" onclick="readMore('bpr')">Read more →</button>
-            <button class="invest-btn" onclick="investNow('bpr')">💰 Shora nonaha</button>
-          </div>
-        </div> 
-     <!-- 8. Liquid Intelligent Technologies -->
-        <div class="card">
-          <h3>💻 Liquid Intelligent Technologies</h3>
-          <img src="li.jpg" alt="Gutuza umutima" />
-          <p><b>Sector:</b> IT / Internet</p>
-          <p><b>Status:</b> ⚖️ Hagati</p>
-          <p><b>Summary:</b> Internet na fibre ku bigo.</p>
-          <div class="card-actions">
-            <button class="read-btn" onclick="readMore('lit')">Read more →</button>
-            <button class="invest-btn" onclick="investNow('lit')">💰 Shora nonaha</button>
-          </div>
-        </div>
-
-      <!-- Zipline -->
       <div class="card">
-        <h3>🚁 Zipline Rwanda</h3>
-        <img src="zi.png" alt="Gutuza umutima" />
+        <span class="status-badge up">📈 Kuzamuka</span>
+        <img src="nr.png" alt="Andela" />
+        <h3>Andela Rwanda</h3>
+        <p><b>Sector:</b> Tech / Education</p>
+        <p class="summary">Gutegura no kohereza programmers ku masoko mpuzamahanga akomeye.</p>
+        <div class="card-actions">
+          <button class="read-btn" onclick="readMore('andela')">Read more →</button>
+          <button class="invest-btn" onclick="investNow('andela')">💰 Shora</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="status-badge mid">⚖️ Hagati</span>
+        <img src="32.png" alt="Equity" />
+        <h3>Equity Bank Rwanda</h3>
+        <p><b>Sector:</b> Banking</p>
+        <p class="summary">Serivisi za banki ku bantu ku giti cyabo n’ibigo bito n'ibiciriritse.</p>
+        <div class="card-actions">
+          <button class="read-btn" onclick="readMore('equity')">Read more →</button>
+          <button class="invest-btn" onclick="investNow('equity')">💰 Shora</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="status-badge up">📈 Kuzamuka</span>
+        <img src="https://www.imbankgroup.com/rw/wp-content/uploads/sites/4/2025/01/im-logo.png" alt="I&M" />
+        <h3>I&M Bank Rwanda</h3>
+        <p><b>Sector:</b> Banking</p>
+        <p class="summary">Banki yibanda ku business nini n’abantu ku giti cyabo bafite amateka akaye.</p>
+        <div class="card-actions">
+          <button class="read-btn" onclick="readMore('im')">Read more →</button>
+          <button class="invest-btn" onclick="investNow('im')">💰 Shora</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="status-badge mid">⚖️ Hagati</span>
+        <img src="ace.jpg" alt="Access" />
+        <h3>Access Bank Rwanda</h3>
+        <p><b>Sector:</b> Banking</p>
+        <p class="summary">Banki mpuzamahanga ikorera mu Rwanda ifite imbaraga mu bucuruzi.</p>
+        <div class="card-actions">
+          <button class="read-btn" onclick="readMore('access')">Read more →</button>
+          <button class="invest-btn" onclick="investNow('access')">💰 Shora</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="status-badge mid">⚖️ Hagati</span>
+        <img src="bpr.jpg" alt="BPR" />
+        <h3>BPR Bank Rwanda</h3>
+        <p><b>Sector:</b> Banking</p>
+        <p class="summary">Yibanda ku baturage benshi n’iterambere ry’icyaro mu gihugu hose.</p>
+        <div class="card-actions">
+          <button class="read-btn" onclick="readMore('bpr')">Read more →</button>
+          <button class="invest-btn" onclick="investNow('bpr')">💰 Shora</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="status-badge mid">⚖️ Hagati</span>
+        <img src="li.jpg" alt="Liquid" />
+        <h3>Liquid Intelligent</h3>
+        <p><b>Sector:</b> IT / Internet</p>
+        <p class="summary">Isambura rya Fibre Optics na internet y'ihuta ku bigo n'ingo.</p>
+        <div class="card-actions">
+          <button class="read-btn" onclick="readMore('lit')">Read more →</button>
+          <button class="invest-btn" onclick="investNow('lit')">💰 Shora</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="status-badge up">📈 Kuzamuka cyane</span>
+        <img src="zi.png" alt="Zipline" />
+        <h3>Zipline Rwanda</h3>
         <p><b>Sector:</b> Tech / Health</p>
-        <p><b>Status:</b> <span class="up">📈 Kuzamuka cyane</span></p>
-        <p><b>Summary:</b> Drones zikora delivery y’ibikoresho by’ubuvuzi.</p>
+        <p class="summary">Drones zikora delivery y’ibikoresho by’ubuvuzi mu bitaro bitandukanye.</p>
         <div class="card-actions">
           <button class="read-btn" onclick="readMore('zipline')">Read more →</button>
-          <button class="invest-btn" onclick="investNow('zipline')">💰 Shora nonaha</button>
+          <button class="invest-btn" onclick="investNow('zipline')">💰 Shora</button>
         </div>
       </div>
 
-      <!-- SafeMotos -->
       <div class="card">
-        <h3>🏍️ SafeMotos</h3>
-        <img src="safe.jpg" alt="Gutuza umutima" />
+        <span class="status-badge up">📈 Kuzamuka</span>
+        <img src="safe.jpg" alt="SafeMotos" />
+        <h3>SafeMotos</h3>
         <p><b>Sector:</b> Transport / Tech</p>
-        <p><b>Status:</b> <span class="up">📈 Kuzamuka</span></p>
-        <p><b>Summary:</b> Urban moto taxi service.</p>
+        <p class="summary">Serivisi ya moto taxi ikoresha ikoranabuhanga mu mujyi wa Kigali.</p>
         <div class="card-actions">
           <button class="read-btn" onclick="readMore('safemoto')">Read more →</button>
-          <button class="invest-btn" onclick="investNow('safemoto')">💰 Shora nonaha</button>
+          <button class="invest-btn" onclick="investNow('safemoto')">💰 Shora</button>
         </div>
       </div>
 
-      <!-- Cogebanque -->
       <div class="card">
-        <h3>🏦 Cogebanque</h3>
-        <img src="coge.jpg" alt="Gutuza umutima" />
+        <span class="status-badge mid">⚖️ Hagati</span>
+        <img src="coge.jpg" alt="Cogebanque" />
+        <h3>Cogebanque</h3>
         <p><b>Sector:</b> Banking</p>
-        <p><b>Status:</b> <span class="mid">⚖️ Hagati</span></p>
-        <p><b>Summary:</b> Niche bank, SMEs focus, growth ikiri moderate.</p>
+        <p class="summary">Niche bank, focus ku ma-SMEs, growth ikiri moderate kuri ubu.</p>
         <div class="card-actions">
           <button class="read-btn" onclick="readMore('cogebanque')">Read more →</button>
-          <button class="invest-btn" onclick="investNow('cogebanque')">💰 Shora nonaha</button>
+          <button class="invest-btn" onclick="investNow('cogebanque')">💰 Shora</button>
         </div>
       </div>
 
-      <!-- Simba Supermarket -->
       <div class="card">
-        <h3>🛒 Simba Supermarket</h3>
-        <img src="si.webp" alt="Gutuza umutima" />
+        <span class="status-badge up">📈 Kuzamuka</span>
+        <img src="si.webp" alt="Simba" />
+        <h3>Simba Supermarket</h3>
         <p><b>Sector:</b> Retail</p>
-        <p><b>Status:</b> <span class="up">📈 Kuzamuka</span></p>
-        <p><b>Summary:</b> Retail chain ikomeye mu Rwanda, expanding rapidly.</p>
+        <p class="summary">Retail chain ikomeye mu Rwanda, expanding rapidly mu mijyi ikomeye.</p>
         <div class="card-actions">
           <button class="read-btn" onclick="readMore('simba')">Read more →</button>
-          <button class="invest-btn" onclick="investNow('simba')">💰 Shora nonaha</button>
+          <button class="invest-btn" onclick="investNow('simba')">💰 Shora</button>
         </div>
       </div>
 
     </div>
-    `;
-  }
-}
-
-/* READ MORE DETAILS */
-function readMore(id){
+  `;
+}}
+/* READ MORE DETAILS - MODERN UI */
+function readMore(id) {
   const c = document.getElementById("content");
-  const info = {
-    bk: `
-      <h2>🏦 Bank of Kigali (BK)</h2>
-      <p><b>Sector:</b> Banking</p>
-      <p><b>Status:</b> 📈 Kuzamuka</p>
-      <p><b>Isesengura:</b> Banki ya mbere mu Rwanda, digital banking ikomeye, cash flow ihamye, ikora loans ku bantu benshi n'ama SMEs. Ibikoresho byayo bya tech birushaho kwaguka, customer base ikomeje kwiyongera, revenue iracyiyongera buri mwaka. Ibi bituma ari option nziza yo gushoramo.</p>
-      <button onclick="loadSection('companies')">⬅️ Subira inyuma</button>
-    `,
-    mtn: `
-      <h2>📱 MTN Rwanda</h2>
-      <p><b>Sector:</b> Telecom</p>
-      <p><b>Status:</b> ⚖️ Hagati</p>
-      <p><b>Isesengura:</b> MTN Rwanda ifite abakiriya benshi, Mobile Money ikomeye, revenue ihamye ariko competition nkeya mu isoko. Amarushanwa akomeye na Airtel, ariko strategic investments ziri gutuma ikomeza kuzamuka mu byuma byayo na services.</p>
-      <button onclick="loadSection('companies')">⬅️ Subira inyuma</button>
-    `,
-    inyange: `
-      <h2>🥛 Inyange Industries</h2>
-      <p><b>Sector:</b> Manufacturing</p>
-      <p><b>Status:</b> 📈 Kuzamuka</p>
-      <p><b>Isesengura:</b> Ikoresha raw materials z'imbere mu gihugu, export ikomeje kwiyongera, brand yizewe, quality products zihamye. Market share ikomeje kwaguka, kandi demand ihamye mu Rwanda no muri EAC.</p>
-      <button onclick="loadSection('companies')">⬅️ Subira inyuma</button>
-    `,
-    
-
- equity: `<h2>🏦 Equity Bank Rwanda</h2><p>Serivisi za banki ku bantu ku giti cyabo n’ibigo. Fokus ku retail banking na SMEs, digital services iriyongera, amanota ku customer satisfaction meza.</p><button onclick="loadSection('companies')">⬅️ Subira inyuma</button>`,
-    im: `<h2>🏦 I&M Bank Rwanda</h2><p>Banki yibanda ku business nini n’abantu ku giti cyabo, digital banking ikomeye, revenue steady, growth mu Kigali n’ahandi.</p><button onclick="loadSection('companies')">⬅️ Subira inyuma</button>`,
-    access: `<h2>🏦 Access Bank Rwanda</h2><p>Banki mpuzamahanga ikorera mu Rwanda, corporate clients focus, services z’imbere mu gihugu, expansion iracyariho.</p><button onclick="loadSection('companies')">⬅️ Subira inyuma</button>`,
-    bpr: `<h2>🏦 BPR Bank Rwanda</h2><p>Yibanda ku baturage benshi, microfinance na SME support, growth moderate, coverage mu cyaro ikomeye.</p><button onclick="loadSection('companies')">⬅️ Subira inyuma</button>`,
-
-    lit: `<h2>💻 Liquid Intelligent Technologies</h2><p>Internet na fibre ku bigo, corporate clients focus, services iriyongera, growth moderate.</p><button onclick="loadSection('companies')">⬅️ Subira inyuma</button>`,
-     ro: `<h2>💻 Rwanda Online</h2><p>Internet & IT services, SMEs support, local market growth, IT solutions ku bigo n’abaturage.</p><button onclick="loadSection('companies')">⬅️ Subira inyuma</button>`,
-
-andela: `<h2>💻 Andela Rwanda</h2><p>Gutegura no kohereza programmers ku masoko mpuzamahanga, talent development, contracts z’ahandi ku isi, scalable business model.</p><button onclick="loadSection('companies')">⬅️ Subira inyuma</button>`,
-    // Ongeraho 11-30 companies descriptions
-    rwandair: `
-      <h2>✈️ RwandAir</h2>
-      <p><b>Sector:</b> Aviation</p>
-      <p><b>Status:</b> ⚠️ Mu bibazo</p>
-      <p><b>Isesengura:</b> Ifite amadeni menshi, ariko government support ihari. Tourism growth izamura amahirwe, fleet iri kwiyongera. Risk iri hagati ariko hari potential yo gukura igihe market yongera kwiyongera.</p>
-      <button onclick="loadSection('companies')">⬅️ Subira inyuma</button>
-    `,
-    airtel: `
-      <h2>📱 Airtel Rwanda</h2>
-      <p><b>Sector:</b> Telecom</p>
-      <p><b>Status:</b> ⚖️ Hagati</p>
-      <p><b>Isesengura:</b> Amarushanwa akomeye na MTN, service quality iri kwiyongera, coverage iri kuzamuka. Profit margin iracyari hasi, ariko strategic moves zirimo technology upgrades na partnerships.</p>
-      <button onclick="loadSection('companies')">⬅️ Subira inyuma</button>
-    `,
-    zipline: `
-      <h2>🚁 Zipline Rwanda</h2>
-      <p><b>Sector:</b> Tech / Health</p>
-      <p><b>Status:</b> 📈 Kuzamuka cyane</p>
-      <p><b>Isesengura:</b> Innovation ikomeye mu gutwara imiti hakoreshejwe drones, contracts nyinshi za government, expansion y'ibikorwa mu Rwanda no muri Africa. Market niche ikomeye kandi scalable.</p>
-      <button onclick="loadSection('companies')">⬅️ Subira inyuma</button>
-    `,
-    safemoto: `
-      <h2>🏍️ SafeMotos</h2>
-      <p><b>Sector:</b> Transport / Tech</p>
-      <p><b>Status:</b> 📈 Kuzamuka</p>
-      <p><b>Isesengura:</b> Urban moto taxi service, service quality yizewe, coverage iri kwiyongera mu mijyi. Investors bashobora kubona growth potential mu Kigali na mu major cities.</p>
-      <button onclick="loadSection('companies')">⬅️ Subira inyuma</button>
-    `,
-    cogebanque: `
-      <h2>🏦 Cogebanque</h2>
-      <p><b>Sector:</b> Banking</p>
-      <p><b>Status:</b> ⚖️ Hagati</p>
-      <p><b>Isesengura:</b> Niche bank ikorera SMEs, growth ikiri moderate. Risk iri hagati ariko market y'abakiriya bato irahari. Digital strategy iri kwiyongera.</p>
-      <button onclick="loadSection('companies')">⬅️ Subira inyuma</button>
-    `,
-    simba: `
-      <h2>🛒 Simba Supermarket</h2>
-      <p><b>Sector:</b> Retail</p>
-      <p><b>Status:</b> 📈 Kuzamuka</p>
-      <p><b>Isesengura:</b> Retail chain ikomeye mu Rwanda, expanding rapidly. Customer base ikomeje kwiyongera, revenue steady, demand ihamye ku products zitandukanye. Amahirwe yo gushoramo muri retail iri hejuru.</p>
-      <button onclick="loadSection('companies')">⬅️ Subira inyuma</button>
-    `
+  
+  // Imiterere y'amabara kuri Status
+  const getStatusStyle = (text) => {
+    if (text.includes("Kuzamuka")) return "background: #e7f9ee; color: #2ecc71; border: 1px solid #2ecc71;";
+    if (text.includes("Hagati")) return "background: #fff9e6; color: #f1c40f; border: 1px solid #f1c40f;";
+    if (text.includes("bibazo")) return "background: #fdf2f2; color: #e74c3c; border: 1px solid #e74c3c;";
+    return "background: #f4f7f6; color: #636e72;";
   };
 
-  c.innerHTML = info[id];
+  const info = {
+    bk: {
+      title: "Bank of Kigali (BK)",
+      icon: "🏦",
+      sector: "Banking",
+      status: "📈 Kuzamuka",
+      analysis: "Banki ya mbere mu Rwanda, digital banking ikomeye, cash flow ihamye, ikora loans ku bantu benshi n'ama SMEs. Ibikoresho byayo bya tech birushaho kwaguka, customer base ikomeje kwiyongera, revenue iracyiyongera buri mwaka. Ibi bituma ari option nziza yo gushoramo."
+    },
+    mtn: {
+      title: "MTN Rwanda",
+      icon: "📱",
+      sector: "Telecom",
+      status: "⚖️ Hagati",
+      analysis: "MTN Rwanda ifite abakiriya benshi, Mobile Money ikomeye, revenue ihamye ariko competition nkeya mu isoko. Amarushanwa akomeye na Airtel, ariko strategic investments ziri gutuma ikomeza kuzamuka mu byuma byayo na services."
+    },
+    inyange: {
+      title: "Inyange Industries",
+      icon: "🥛",
+      sector: "Manufacturing",
+      status: "📈 Kuzamuka",
+      analysis: "Ikoresha raw materials z'imbere mu gihugu, export ikomeje kwiyongera, brand yizewe, quality products zihamye. Market share ikomeje kwaguka, kandi demand ihamye mu Rwanda no muri EAC."
+    },
+    equity: { title: "Equity Bank Rwanda", icon: "🏦", sector: "Banking", status: "⚖️ Hagati", analysis: "Fokus ku retail banking na SMEs, digital services iriyongera, amanota ku customer satisfaction meza." },
+    im: { title: "I&M Bank Rwanda", icon: "🏦", sector: "Banking", status: "📈 Kuzamuka", analysis: "Banki yibanda ku business nini n’abantu ku giti cyabo, digital banking ikomeye, revenue steady, growth mu Kigali n’ahandi." },
+    access: { title: "Access Bank Rwanda", icon: "🏦", sector: "Banking", status: "⚖️ Hagati", analysis: "Banki mpuzamahanga ikorera mu Rwanda, corporate clients focus, services z’imbere mu gihugu, expansion iracyariho." },
+    bpr: { title: "BPR Bank Rwanda", icon: "🏦", sector: "Banking", status: "⚖️ Hagati", analysis: "Yibanda ku baturage benshi, microfinance na SME support, growth moderate, coverage mu cyaro ikomeye." },
+    lit: { title: "Liquid Intelligent Technologies", icon: "💻", sector: "IT / Internet", status: "⚖️ Hagati", analysis: "Internet na fibre ku bigo, corporate clients focus, services iriyongera, growth moderate." },
+    ro: { title: "Rwanda Online", icon: "💻", sector: "IT / Internet", status: "⚖️ Hagati", analysis: "Internet & IT services, SMEs support, local market growth, IT solutions ku bigo n’abaturage." },
+    andela: { title: "Andela Rwanda", icon: "💻", sector: "Tech / Education", status: "📈 Kuzamuka", analysis: "Gutegura no kohereza programmers ku masoko mpuzamahanga, talent development, scalable business model." },
+    rwandair: { title: "RwandAir", icon: "✈️", sector: "Aviation", status: "⚠️ Mu bibazo", analysis: "Ifite amadeni menshi, ariko government support ihari. Tourism growth izamura amahirwe. Risk iri hagati ariko hari potential yo gukura." },
+    airtel: { title: "Airtel Rwanda", icon: "📱", sector: "Telecom", status: "⚖️ Hagati", analysis: "Amarushanwa akomeye na MTN, service quality iri kwiyongera, coverage iri kuzamuka. Profit margin iracyari hasi." },
+    zipline: { title: "Zipline Rwanda", icon: "🚁", sector: "Tech / Health", status: "📈 Kuzamuka cyane", analysis: "Innovation ikomeye mu gutwara imiti hakoreshejwe drones, contracts nyinshi za government. Market niche ikomeye kandi scalable." },
+    safemoto: { title: "SafeMotos", icon: "🏍️", sector: "Transport / Tech", status: "📈 Kuzamuka", analysis: "Urban moto taxi service, service quality yizewe, coverage iri kwiyongera mu mijyi." },
+    cogebanque: { title: "Cogebanque", icon: "🏦", sector: "Banking", status: "⚖️ Hagati", analysis: "Niche bank ikorera SMEs, growth ikiri moderate. Risk iri hagati ariko market y'abakiriya bato irahari." },
+    simba: { title: "Simba Supermarket", icon: "🛒", sector: "Retail", status: "📈 Kuzamuka", analysis: "Retail chain ikomeye mu Rwanda, expanding rapidly. Customer base ikomeje kwiyongera, revenue steady." }
+  };
+
+  const item = info[id];
+  if (!item) return;
+
+  c.innerHTML = `
+    <div style="max-width: 700px; margin: 0 auto; animation: fadeIn 0.5s ease;">
+      <div style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+        <div style="background: linear-gradient(135deg, #4e61cc 0%, #3d4fad 100%); padding: 40px; text-align: center; color: white;">
+          <div style="font-size: 50px; margin-bottom: 10px;">${item.icon}</div>
+          <h2 style="margin: 0; font-size: 28px;">${item.title}</h2>
+          <div style="margin-top: 15px; display: inline-block; padding: 5px 15px; border-radius: 50px; font-size: 13px; background: rgba(255,255,255,0.2);">
+            ${item.sector}
+          </div>
+        </div>
+
+        <div style="padding: 30px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px;">
+             <span style="font-weight: 600; color: #2d3436;">Imiterere (Status):</span>
+             <span style="padding: 6px 12px; border-radius: 8px; font-weight: 600; font-size: 14px; ${getStatusStyle(item.status)}">
+                ${item.status}
+             </span>
+          </div>
+
+          <h3 style="color: #4e61cc; font-size: 18px; border-bottom: 2px solid #f0f2ff; padding-bottom: 10px;">Isesengura rirambuye</h3>
+          <p style="color: #636e72; line-height: 1.8; font-size: 15px;">
+            ${item.analysis}
+          </p>
+
+          <div style="margin-top: 35px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+            <button onclick="loadSection('companies')" style="padding: 15px; border: 1px solid #ddd; background: white; border-radius: 12px; cursor: pointer; font-weight: 600; color: #636e72; transition: 0.3s;">
+              ⬅️ Subira Inyuma
+            </button>
+            <button onclick="investNow('${id}')" style="padding: 15px; border: none; background: #4e61cc; color: white; border-radius: 12px; cursor: pointer; font-weight: 600; transition: 0.3s; box-shadow: 0 4px 15px rgba(78,97,204,0.3);">
+              💰 Shora Nonaha
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
 }
-
-
 /* INVEST NOW FORM */
 function investNow(id){
   const c = document.getElementById("content");
+  if(!c) return; // Niba nta content ihari ntagukomeza
+
   const companyInfo = {
     bk: "Bank of Kigali (BK)",
     mtn: "MTN Rwanda",
@@ -2243,59 +2217,110 @@ function investNow(id){
     zipline: "Zipline Rwanda",
     safemoto: "SafeMotos",
     cogebanque: "Cogebanque",
-    simba: "Simba Supermarket"
+    simba: "Simba Supermarket",
+    ro: "Rwanda Online",
+    andela: "Andela Rwanda",
+    equity: "Equity Bank Rwanda",
+    im: "I&M Bank Rwanda",
+    access: "Access Bank Rwanda",
+    bpr: "BPR Bank Rwanda",
+    lit: "Liquid Intelligent Technologies"
   };
 
+  const currentCompany = companyInfo[id] || "Iki kigo";
+
   c.innerHTML = `
-    <h2>💰 Shora muri ${companyInfo[id]}</h2>
-    <p>Andika amakuru yawe kugirango ushobore gushora.</p>
+    <div id="investContainer" style="max-width: 500px; margin: 0 auto; animation: fadeIn 0.4s ease-in;">
+        <h2 style="color: #4e61cc; text-align:center;">💰 Shora muri ${currentCompany}</h2>
+        <p style="color: #636e72; text-align:center; margin-bottom: 20px;">Andika amakuru yawe neza kugira ngo ushakirwe amahirwe.</p>
 
-    <form id="investForm">
-      <label>Izina ryawe:</label><br>
-      <input type="text" id="investorName" required placeholder="Andika izina ryawe" /><br><br>
+        <form id="investForm" action="https://formspree.io/f/xgozpwzj" method="POST" style="background: #fff; padding: 30px; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.1);">
+          <input type="hidden" name="Company" value="${currentCompany}">
+          
+          <label style="font-weight: 600; font-size: 13px; color: #2d3436;">Amazina yawe</label>
+          <input type="text" name="name" id="investorName" required placeholder="Urugero: Munyazikwiye Johnson" style="width:100%; padding:12px; margin: 8px 0 15px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-family: inherit;"/>
 
-      <label>Email:</label><br>
-      <input type="email" id="investorEmail" required placeholder="Email yawe" /><br><br>
+          <label style="font-weight: 600; font-size: 13px; color: #2d3436;">Email</label>
+          <input type="email" name="email" id="investorEmail" required placeholder="email@example.com" style="width:100%; padding:12px; margin: 8px 0 15px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-family: inherit;"/>
 
-      <label>Telefone:</label><br>
-      <input type="tel" id="investorPhone" required placeholder="Telefone yawe" /><br><br>
+          <label style="font-weight: 600; font-size: 13px; color: #2d3436;">Telefone</label>
+          <input type="tel" name="phone" id="investorPhone" required placeholder="078..." style="width:100%; padding:12px; margin: 8px 0 15px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-family: inherit;"/>
 
-      <label>Amount ushaka gushora (RWF):</label><br>
-      <input type="number" id="investAmount" required placeholder="Urugero: 100000" /><br><br>
+          <label style="font-weight: 600; font-size: 13px; color: #2d3436;">Ingano y'Imari (RWF)</label>
+          <input type="number" name="amount" id="investAmount" required placeholder="Urugero: 500000" style="width:100%; padding:12px; margin: 8px 0 15px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-family: inherit;"/>
 
-      <label>Experience mu ishoramari:</label><br>
-      <input type="text" id="investExperience" placeholder="Urugero: 2 years, beginner, advanced" /><br><br>
+          <label style="font-weight: 600; font-size: 13px; color: #2d3436;">Experience</label>
+          <input type="text" name="experience" placeholder="Urugero: Beginner, 2 years..." style="width:100%; padding:12px; margin: 8px 0 15px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-family: inherit;"/>
 
-      <label>Impamvu ushaka gushora muri iyi company:</label><br>
-      <textarea id="investReason" rows="4" placeholder="Andika impamvu yawe..." required></textarea><br><br>
+          <label style="font-weight: 600; font-size: 13px; color: #2d3436;">Kuki wifuza gushoramo?</label>
+          <textarea name="reason" rows="3" required placeholder="Sobanura muri make..." style="width:100%; padding:12px; margin: 8px 0 15px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-family: inherit;"></textarea>
 
-      <button type="submit">Ohereza Shoramari</button>
-      <button type="button" onclick="loadSection('companies')">⬅️ Subira inyuma</button>
-    </form>
+          <button type="submit" id="submitBtn" style="width:100%; padding:15px; background:#4e61cc; color:white; border:none; border-radius:10px; font-weight:600; cursor:pointer; font-size:16px;">Ohereza Ubusabe</button>
+          <button type="button" onclick="loadSection('companies')" style="width:100%; background:none; border:none; color:#636e72; margin-top:15px; cursor:pointer; text-decoration: underline;">⬅️ Subira inyuma</button>
+        </form>
 
-    <div id="formMessage" style="margin-top:15px; font-weight:bold;"></div>
+        <div id="successCard" style="display:none; text-align: center; padding: 40px 20px; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+            <div style="width: 80px; height: 80px; background: #2ecc71; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; margin: 0 auto 20px;">✓</div>
+            <h2 style="color: #2d3436; margin: 0 0 10px 0;">Ubusabe Bwakiriwe!</h2>
+            <p id="successText" style="color: #636e72; line-height: 1.6;"></p>
+            <div style="height: 5px; background: #eee; border-radius: 10px; margin-top: 25px; overflow: hidden;">
+              <div id="pBar" style="height: 100%; background: #4e61cc; width: 100%;"></div>
+            </div>
+            <p style="font-size: 12px; color: #999; margin-top: 10px;">Gusubira kuri Companies vuba...</p>
+        </div>
+    </div>
   `;
 
   const form = document.getElementById("investForm");
-  form.addEventListener("submit", function(e){
-    e.preventDefault();
-    const name = document.getElementById("investorName").value;
-    const email = document.getElementById("investorEmail").value;
-    const phone = document.getElementById("investorPhone").value;
-    const amount = document.getElementById("investAmount").value;
-    const experience = document.getElementById("investExperience").value;
-    const reason = document.getElementById("investReason").value;
+  const btn = document.getElementById("submitBtn");
+  const successCard = document.getElementById("successCard");
 
-    const msg = `
-      Murakoze ${name}!
-      Twakiriye gahunda yawe yo gushora ${amount} RWF muri ${companyInfo[id]}.
-      Experience yawe: ${experience}.
-      Impamvu yawe: ${reason}.
-      Tuzakumenyesha vuba kuri ${email} cyangwa kuri telefone ${phone}.
-    `;
-    document.getElementById("formMessage").innerText = msg;
-    form.reset();
-  });
+  form.onsubmit = function(e) {
+    e.preventDefault();
+    
+    btn.disabled = true;
+    btn.innerText = "Iri koherezwa...";
+
+    const name = document.getElementById("investorName").value;
+    const amount = parseInt(document.getElementById("investAmount").value).toLocaleString();
+
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      // 1. Kugerageza gushumura Confetti (niba script ihari)
+      if (typeof confetti === 'function') {
+        confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
+      }
+
+      // 2. Kwerekana UI nshya
+      form.parentElement.querySelector('h2').style.display = "none";
+      form.parentElement.querySelector('p').style.display = "none";
+      form.style.display = "none";
+      successCard.style.display = "block";
+      document.getElementById("successText").innerHTML = `Murakoze <b>${name}</b>, gahunda yo gushora <b>${amount} RWF</b> muri <b>${currentCompany}</b> yageze kuri BridgeInvest. Tuzakumenyesha intambwe zikurikira kuri email yawe.`;
+
+      // 3. Progress bar animation
+      let w = 100;
+      const bar = document.getElementById("pBar");
+      const timer = setInterval(() => {
+        w -= 2;
+        bar.style.width = w + "%";
+        if(w <= 0) {
+          clearInterval(timer);
+          loadSection('companies');
+        }
+      }, 100);
+
+    }).catch(err => {
+      alert("Habaye ikibazo cya Internet. Ongera ugerageze.");
+      btn.disabled = false;
+      btn.innerText = "Ohereza Shoramari";
+    });
+  };
+}
+;
 
 }
 
