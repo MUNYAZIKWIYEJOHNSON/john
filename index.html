@@ -232,6 +232,19 @@ button:active {
 .dropdown:focus-within .dropdown-content {
   display: block;
 }
+.logo {
+    display: flex;
+    justify-content: space-between; /* Bituma logo ijya ibumoso, izindi zikajya iburyo */
+    align-items: center; /* Bituma byose biba biri hagati mu burebure */
+    padding: 10px 5%;
+    background-color: rgba(10, 17, 34, 0.95);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo img {
+    height: 50px;    /* Gena uburebure ushaka bwa logo yawe */
+    width: auto;     /* Bituma ubugari bwibanza (auto-adjust) */
+}
 
   /* ===== Regulations ===== */
   .regulations-disclaimer {
@@ -535,7 +548,12 @@ form button:hover{
 <main id="main">
   <div id="content">
 <header style="font-family: 'Poppins', sans-serif; background: #0a1122; padding: 40px 20px; color: #ffffff;">
-  
+   <div class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="y.png" alt="Izina rya Website yawe">
+            </a>
+        </div>
   <div style="text-align: center; max-width: 900px; margin: 0 auto 50px;">
     <h1 style="font-size: 3.5rem; font-weight: 800; margin: 0; background: linear-gradient(90deg, #4f46e5, #06b6d4); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -2px;">
   BridgeInvest Rwanda
