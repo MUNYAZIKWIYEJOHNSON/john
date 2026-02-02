@@ -245,7 +245,6 @@ button:active {
   }
 
 
-
 .main-footer {
   background: #011442;
   color: #d1d5db;
@@ -261,6 +260,56 @@ button:active {
   grid-template-columns: 1.5fr 1fr 1fr;
   gap: 40px;
 }
+
+/* Amabara y'umwimerere ya buri logo */
+.social-links a .fa-facebook-f {
+    color: #1877F2; /* Ubururu bwa Facebook */
+}
+
+.social-links a .fa-x-twitter {
+    color: #000000; /* Umukara wa X */
+}
+
+.social-links a .fa-instagram {
+    color: #E4405F; /* Iroza/Umutuku rya Instagram */
+}
+
+.social-links a .fa-linkedin-in {
+    color: #0A66C2; /* Ubururu bwa LinkedIn */
+}
+
+/* Kugira ngo zose zigire isura imwe (General Style) */
+.social-links a {
+    background-color: #ffffff; /* Background yera inyuma y'agakono */
+    width: 35px;
+    height: 35px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; /* Bituma biba uruziga */
+    margin-right: 10px;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Iyo umuntu akozeho (Hover effect) */
+.social-links a:hover {
+    transform: translateY(-3px); /* Kazamuka gato */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+.footer-logo {
+    display: flex;
+    align-items: center; /* Bituma logo n'izina biba biri ku murongo umwe horizontal */
+    gap: 10px;           /* Intera hagati ya logo n'izina */
+    margin-bottom: 15px;
+}
+
+.footer-actual-logo {
+    height: 45px;        /* Gena uburebure bwiza bwa logo yawe */
+    width: auto;         /* Bituma ishusho itagondama */
+    display: block;
+}
+
 
 /* Logo */
 .footer-logo {
@@ -278,17 +327,7 @@ button:active {
 }
 
 .logo-text span { color: #00d4ff; }
-.social-links a {
-    text-decoration: none;
-    font-size: 24px; /* Ingano y'ishusho */
-    margin: 0 10px;  /* Intera iri hagati yazo */
-    color: #333;     /* Ibara ushaka */
-    transition: 0.3s;
-}
 
-.social-links a:hover {
-    color: #007bff; /* Ibara zihindura iyo uzikozeho */
-}
 /* Titles */
 .footer-title {
   color: #ffffff;
@@ -380,6 +419,7 @@ button:active {
   .footer-links li a { justify-content: center; }
   .social-links { justify-content: center; }
 }
+
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
@@ -1093,10 +1133,14 @@ setInterval(playNextSectionVideo, 10000); // 10 seconds
     
     <div class="footer-section about">
       <div class="footer-logo">
-        <span class="logo-icon">📈</span>
-        <span class="logo-text">BridgeInvest&nbsp;<span>Rwanda</span></span>
-      </div>
+  <a href="#" onclick="loadSection('main')">
+    <img src="y.png" alt="BridgeInvest Rwanda Logo" class="footer-actual-logo">
+  </a>
+  <span class="logo-text">BridgeInvest&nbsp;<span>Rwanda</span></span>
+</div>
+
       <p>Isoko ry’imari mu Rwanda mu ntoki zawe. Amakuru yizewe, imibare ya nyayo, n'inyigisho ku ishoramari.</p>
+
      <div class="social-links">
     <a href="https://www.facebook.com/izina_ryawe" target="_blank">
         <i class="fab fa-facebook-f"></i>
@@ -1119,7 +1163,7 @@ setInterval(playNextSectionVideo, 10000); // 10 seconds
     <div class="footer-section">
       <h3 class="footer-title">Navigation</h3>
       <ul class="footer-links">
-        <li><a href="#" onclick="loadSection('main')">🏠 home</a></li>
+        <li><a href="#" onclick="loadSection('main')">🏠 Ahabanza</a></li>
         <li><a href="#" onclick="loadSection('exchange')">💱 Live Exchange Rates</a></li>
         <li><a href="#" onclick="loadSection('news')">📰 News / Updates</a></li>
         <li><a href="#" onclick="loadSection('companies')">🏢 Companies Overview</a></li>
