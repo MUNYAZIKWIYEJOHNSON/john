@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hitamo Uruhare | RWF Market</title>
+<title>BridgeInvest Rwanda</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
@@ -103,6 +103,7 @@ body {
 
 /* FOOTER SECTION */
 
+
 .main-footer {
   background: #011442;
   color: #d1d5db;
@@ -118,6 +119,56 @@ body {
   grid-template-columns: 1.5fr 1fr 1fr;
   gap: 40px;
 }
+
+/* Amabara y'umwimerere ya buri logo */
+.social-links a .fa-facebook-f {
+    color: #1877F2; /* Ubururu bwa Facebook */
+}
+
+.social-links a .fa-x-twitter {
+    color: #000000; /* Umukara wa X */
+}
+
+.social-links a .fa-instagram {
+    color: #E4405F; /* Iroza/Umutuku rya Instagram */
+}
+
+.social-links a .fa-linkedin-in {
+    color: #0A66C2; /* Ubururu bwa LinkedIn */
+}
+
+/* Kugira ngo zose zigire isura imwe (General Style) */
+.social-links a {
+    background-color: #ffffff; /* Background yera inyuma y'agakono */
+    width: 35px;
+    height: 35px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; /* Bituma biba uruziga */
+    margin-right: 10px;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Iyo umuntu akozeho (Hover effect) */
+.social-links a:hover {
+    transform: translateY(-3px); /* Kazamuka gato */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+.footer-logo {
+    display: flex;
+    align-items: center; /* Bituma logo n'izina biba biri ku murongo umwe horizontal */
+    gap: 10px;           /* Intera hagati ya logo n'izina */
+    margin-bottom: 15px;
+}
+
+.footer-actual-logo {
+    height: 45px;        /* Gena uburebure bwiza bwa logo yawe */
+    width: auto;         /* Bituma ishusho itagondama */
+    display: block;
+}
+
 
 /* Logo */
 .footer-logo {
@@ -135,17 +186,7 @@ body {
 }
 
 .logo-text span { color: #00d4ff; }
-.social-links a {
-    text-decoration: none;
-    font-size: 24px; /* Ingano y'ishusho */
-    margin: 0 10px;  /* Intera iri hagati yazo */
-    color: #333;     /* Ibara ushaka */
-    transition: 0.3s;
-}
 
-.social-links a:hover {
-    color: #007bff; /* Ibara zihindura iyo uzikozeho */
-}
 /* Titles */
 .footer-title {
   color: #ffffff;
@@ -237,7 +278,6 @@ body {
   .footer-links li a { justify-content: center; }
   .social-links { justify-content: center; }
 }
-
 
 </style>
 </head>
