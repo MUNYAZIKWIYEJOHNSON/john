@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BridgeInvest Rwanda</title>
-  <link rel="icon" type="image/png" href="y.png">
+<title>Tanga Umushinga | RWF Market</title>
+<link rel="icon" type="image/png" href="y.png">
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -41,7 +42,7 @@ body {
 .container {
   background: var(--card);
   width: 100%;
-  max-width: 650px; /* Twongereye ubugari kuko hari amakuru menshi */
+  max-width: 650px;
   padding: 40px;
   border-radius: 20px;
   box-shadow: 0 15px 35px rgba(0,0,0,0.2);
@@ -106,7 +107,6 @@ input:focus, textarea:focus, select:focus {
 
 textarea { min-height: 100px; resize: vertical; }
 
-/* FILE UPLOAD STYLING */
 input[type="file"] {
   background: white;
   padding: 8px;
@@ -133,14 +133,20 @@ button[type="submit"]:hover {
   box-shadow: 0 6px 20px rgba(78,97,204,0.4);
 }
 
+button[type="submit"]:disabled {
+  background: #95a5a6;
+  cursor: not-allowed;
+}
+
 #responseMsg {
   margin-top: 20px;
   padding: 15px;
   border-radius: 12px;
-  background: #f0f2ff;
-  border-left: 5px solid var(--accent);
+  background: #e7f9ee;
+  border-left: 5px solid #2ecc71;
   display: none;
   line-height: 1.6;
+  color: #27ae60;
 }
 
 @media (max-width: 600px) {
@@ -155,32 +161,32 @@ button[type="submit"]:hover {
 <a href="javascript:history.back()" class="back-btn">← Subira Inyuma</a>
 
 <div class="container">
-  <div style="text-align: center; margin-bottom: 20px;">
+   <div style="text-align: center; margin-bottom: 20px;">
       <img src="y.png" alt="RWF Market Logo" style="height: 60px; width: auto;">
   </div>
   <h2>Tanga Umushinga Wawe</h2>
   <p class="subtitle">Uzuza amakuru asabwa kugira ngo ushakirwe abashoramari</p>
  
-  <form id="projectForm">
+  <form id="projectForm" action="https://formspree.io/f/xgozpwzj" method="POST" enctype="multipart/form-data">
     <div class="form-grid">
       <div class="full">
         <label>Amazina yawe</label>
-        <input type="text" id="name" placeholder="Urugero: Munyazikwiye Johnson" required>
+        <input type="text" name="name" id="name" placeholder="Urugero: Munyazikwiye Johnson" required>
       </div>
 
       <div>
         <label>Email yawe</label>
-        <input type="email" id="email" placeholder="example@mail.com" required>
+        <input type="email" name="email" id="email" placeholder="example@mail.com" required>
       </div>
 
       <div>
         <label>Telefone</label>
-        <input type="tel" id="phone" placeholder="078XXXXXXX" required>
+        <input type="tel" name="phone" id="phone" placeholder="078XXXXXXX" required>
       </div>
 
       <div>
         <label>Icyiciro (Category)</label>
-        <select id="category" required>
+        <select name="category" id="category" required>
           <option value="">-- Hitamo --</option>
           <option value="Technology">Ikoranabuhanga</option>
           <option value="Agriculture">Ubuhinzi</option>
@@ -193,7 +199,7 @@ button[type="submit"]:hover {
 
       <div>
         <label>Ubunararibonye (Experience)</label>
-        <select id="experience" required>
+        <select name="experience" id="experience" required>
           <option value="">-- Hitamo --</option>
           <option value="Beginner">Nabitangiye ubu</option>
           <option value="Intermediate">Hagati na hagati</option>
@@ -203,31 +209,31 @@ button[type="submit"]:hover {
 
       <div class="full">
         <label>Izina ry'Umushinga</label>
-        <input type="text" id="projectTitle" placeholder="Urugero: Smart Farm System" required>
+        <input type="text" name="project_title" id="projectTitle" placeholder="Urugero: Smart Farm System" required>
       </div>
 
       <div class="full">
         <label>Sobanura Umushinga mu ncamake</label>
-        <textarea id="description" placeholder="Andika hano amakuru arambuye y'umushinga..." required></textarea>
+        <textarea name="description" id="description" placeholder="Andika hano amakuru arambuye y'umushinga..." required></textarea>
       </div>
 
       <div>
         <label>Ingengo y'imari (RWF)</label>
-        <input type="number" id="budget" placeholder="Urugero: 500,000" required>
+        <input type="number" name="budget" id="budget" placeholder="Urugero: 500,000" required>
       </div>
 
       <div>
         <label>Igihe uzamara (Timeline)</label>
-        <input type="text" id="timeline" placeholder="Urugero: Amezi 6" required>
+        <input type="text" name="timeline" id="timeline" placeholder="Urugero: Amezi 6" required>
       </div>
 
       <div class="full">
         <label>Dosiye y'umushinga (PDF/DOCX)</label>
-        <input type="file" id="fileUpload" accept=".pdf,.docx">
+        <input type="file" name="attachment" id="fileUpload" accept=".pdf,.docx">
       </div>
     </div>
 
-    <button type="submit">Ohereza Umushinga</button>
+    <button type="submit" id="submitBtn">Ohereza Umushinga</button>
   </form>
 
   <div id="responseMsg"></div>
@@ -243,30 +249,64 @@ const categoryNames = {
   "Others": "Ibindi"
 };
 
-document.getElementById("projectForm").addEventListener("submit", function(e){
+const form = document.getElementById("projectForm");
+const submitBtn = document.getElementById("submitBtn");
+const resp = document.getElementById("responseMsg");
+
+form.addEventListener("submit", function(e){
   e.preventDefault();
+  
+  // Guhindura buto mu gihe cyo kohereza
+  submitBtn.disabled = true;
+  submitBtn.innerText = "Iri koherezwa...";
 
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const phone = document.getElementById("phone").value;
-  const project = document.getElementById("projectTitle").value;
-  const budget = parseFloat(document.getElementById("budget").value).toLocaleString();
-  const cat = document.getElementById("category").value;
+  const formData = new FormData(form);
 
-  const message = `
-    <strong>Murakoze ${name}!</strong><br>
-    Umushinga wawe <b>"${project}"</b> mu cyiciro cya <b>${categoryNames[cat]}</b> wakiriwe.<br>
-    <br>
-    Ingengo y'imari yasabwe: <b>${budget} RWF</b>.<br>
-    Tugiye kuwusuzuma, tuzakumenyesha kuri <b>${email}</b> cyangwa kuri telphone <b>${phone}</b>.
-  `;
+  // Kohereza kuri Formspree
+  fetch(form.action, {
+    method: 'POST',
+    body: formData,
+    headers: {
+      'Accept': 'application/json'
+    }
+  }).then(response => {
+    if (response.ok) {
+      // Amakuru asanzwe yawe yo kwerekana ubutumwa
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const project = document.getElementById("projectTitle").value;
+      const budget = parseFloat(document.getElementById("budget").value).toLocaleString();
+      const cat = document.getElementById("category").value;
 
-  const resp = document.getElementById("responseMsg");
-  resp.style.display = "block";
-  resp.innerHTML = message;
+      const message = `
+        <strong>Murakoze ${name}!</strong><br>
+        Umushinga wawe <b>"${project}"</b> wakiriwe neza.<br>
+        <br>
+        Tugiye kuwusuzuma, tuzakumenyesha vuba kuri <b>${email}</b>.
+      `;
 
-  // Gusubira hejuru kugira ngo basome ubutumwa
-  resp.scrollIntoView({ behavior: 'smooth' });
+      resp.style.display = "block";
+      resp.innerHTML = message;
+      
+      form.reset(); // Gusiba ibyari muri form
+      form.style.display = "none"; // Guhisha form
+      resp.scrollIntoView({ behavior: 'smooth' });
+
+      // Gusubira ahabanza nyuma ya 5s
+      setTimeout(() => {
+        window.location.href = "index.html"; 
+      }, 5000);
+
+    } else {
+      submitBtn.disabled = false;
+      submitBtn.innerText = "Ohereza Umushinga";
+      alert("Harimo ikibazo, gerageza nanone.");
+    }
+  }).catch(error => {
+    submitBtn.disabled = false;
+    submitBtn.innerText = "Ohereza Umushinga";
+    alert("Habaye ikibazo cya interineti.");
+  });
 });
 </script>
 
