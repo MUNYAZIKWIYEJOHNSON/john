@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hitamo Uruhare | RWF Market</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
 :root {
     --accent: #4e61cc;
@@ -134,7 +135,17 @@ body {
 }
 
 .logo-text span { color: #00d4ff; }
+.social-links a {
+    text-decoration: none;
+    font-size: 24px; /* Ingano y'ishusho */
+    margin: 0 10px;  /* Intera iri hagati yazo */
+    color: #333;     /* Ibara ushaka */
+    transition: 0.3s;
+}
 
+.social-links a:hover {
+    color: #007bff; /* Ibara zihindura iyo uzikozeho */
+}
 /* Titles */
 .footer-title {
   color: #ffffff;
@@ -257,18 +268,29 @@ body {
         <span class="logo-text">BridgeInvest&nbsp;<span>Rwanda</span></span>
       </div>
       <p>Isoko ry’imari mu Rwanda mu ntoki zawe. Amakuru yizewe, imibare ya nyayo, n'inyigisho ku ishoramari.</p>
-      <div class="social-links">
-        <a href="#">FB</a>
-        <a href="#">TW</a>
-        <a href="#">IG</a>
-        <a href="#">LN</a>
-      </div>
+    <div class="social-links">
+    <a href="https://www.facebook.com/izina_ryawe" target="_blank">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+    
+    <a href="https://www.twitter.com/izina_ryawe" target="_blank">
+        <i class="fab fa-x-twitter"></i>
+    </a>
+    
+    <a href="https://www.instagram.com/izina_ryawe" target="_blank">
+        <i class="fab fa-instagram"></i>
+    </a>
+    
+    <a href="https://www.linkedin.com/in/izina_ryawe" target="_blank">
+        <i class="fab fa-linkedin-in"></i>
+    </a>
+</div>
     </div>
 
     <div class="footer-section">
       <h3 class="footer-title">Navigation</h3>
       <ul class="footer-links">
-        <li><a href="#" onclick="loadSection('main')">🏠 Ahabanza</a></li>
+        <li><a href="#" onclick="loadSection('main')">🏠 home</a></li>
         <li><a href="#" onclick="loadSection('exchange')">💱 Live Exchange Rates</a></li>
         <li><a href="#" onclick="loadSection('news')">📰 News / Updates</a></li>
         <li><a href="#" onclick="loadSection('companies')">🏢 Companies Overview</a></li>
