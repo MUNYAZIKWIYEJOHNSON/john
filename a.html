@@ -234,19 +234,22 @@ button:disabled { background: #95a5a6; }
     btn.innerText = "Iri koherezwa...";
 
     try {
-      
-  // Shaka aho umuntu aherereye (Uburyo bwa 2 bwizewe)
+  
+// Gukoresha HTTPS API yizewe cyane
 let locationData = { city: "N/A", country: "N/A" };
 try {
-  const geoRes = await fetch('http://ip-api.com/json/');
-  const geo = await geoRes.json();
-  if(geo.status === "success") {
-    locationData = { city: geo.city, country: geo.country };
-  }
+    const geoRes = await fetch('https://ipapi.co/json/');
+    if (geoRes.ok) {
+        const geo = await geoRes.json();
+        // Hano dufata amakuru niba yabonetse
+        locationData = { 
+            city: geo.city || "Unknown City", 
+            country: geo.country_name || "Unknown Country" 
+        };
+    }
 } catch (err) {
-  console.log("Ntibashije gusoma location");
+    console.error("Location detection failed:", err);
 }
-
       // 2. Kohereza muri Firebase
       await addDoc(collection(db, "investors"), {
         name: document.getElementById("name").value,
